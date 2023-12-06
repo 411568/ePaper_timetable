@@ -2,4 +2,6 @@
   (version 7)
   (lib (name "test")(type "KiCad")(uri "${KIPRJMOD}/libraries/test.pretty")(options "")(descr ""))
   (lib (name "MCU_RaspberryPi_and_Boards")(type "KiCad")(uri "${KIPRJMOD}/libraries/RP_Pico/KiCad-RP-Pico-main/RP-Pico Libraries/MCU_RaspberryPi_and_Boards.pretty")(options "")(descr ""))
+  (lib (name "libraries")(type "KiCad")(uri "${KIPRJMOD}/libraries")(options "")(descr ""))
+  (lib (name "FPC conn")(type "KiCad")(uri "${KIPRJMOD}/libraries/FPC conn")(options "")(descr ""))
 )
