@@ -9,4 +9,6 @@
   (lib (name "MCU_RaspberryPi_and_Boards")(type "KiCad")(uri "${KIPRJMOD}/libraries/RP_Pico/KiCad-RP-Pico-main/RP-Pico Libraries/MCU_RaspberryPi_and_Boards.kicad_sym")(options "")(descr ""))
   (lib (name "SFV24R-2STE1HLF")(type "KiCad")(uri "${KIPRJMOD}/libraries/SFV24R-2STE1HLF/SFV24R-2STE1HLF.kicad_sym")(options "")(descr ""))
   (lib (name "52435-2471")(type "KiCad")(uri "${KIPRJMOD}/libraries/52435-2471/52435-2471.kicad_sym")(options "")(descr ""))
+  (lib (name "PicoW")(type "KiCad")(uri "${KIPRJMOD}/libraries/PicoW.kicad_sym")(options "")(descr ""))
+  (lib (name "MCU_RPi_Pico")(type "KiCad")(uri "${KIPRJMOD}/libraries/MCU_RPi_Pico.kicad_sym")(options "")(descr ""))
 )

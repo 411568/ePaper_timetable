@@ -6,4 +6,5 @@
   (lib (name "FPC conn")(type "KiCad")(uri "${KIPRJMOD}/libraries/FPC conn")(options "")(descr ""))
   (lib (name "7_5 inch display model")(type "KiCad")(uri "${KIPRJMOD}/libraries/Waveshare display 3d models/7_5 inch display model.pretty")(options "")(descr ""))
   (lib (name "52435-2471")(type "KiCad")(uri "${KIPRJMOD}/libraries/52435-2471")(options "")(descr ""))
+  (lib (name "MCU_RPi_Pico")(type "KiCad")(uri "${KIPRJMOD}/libraries/MCU_RPi_Pico.pretty")(options "")(descr ""))
 )
