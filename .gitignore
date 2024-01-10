@@ -57,4 +57,3 @@ fp-info-cache
 
 # Pico SDK build files
 **/build/
-firmware/ePaperTimetableFirmware/.vscode/settings.json
