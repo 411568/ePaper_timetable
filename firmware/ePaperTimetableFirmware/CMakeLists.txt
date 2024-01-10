@@ -25,6 +25,17 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
+add_subdirectory(ePaper/lib/Config)
+add_subdirectory(ePaper/lib/e-Paper)
+add_subdirectory(ePaper/lib/Fonts)
+add_subdirectory(ePaper/lib/GUI)
+add_subdirectory(ePaper/examples)
+
+# add a header directory
+include_directories(ePaper/examples)
+include_directories(ePaper/lib/Config)
+include_directories(ePaper/lib/GUI)
+
 add_executable(ePaperTimetableFirmware 
   main.c
   )
@@ -35,6 +46,8 @@ pico_set_program_version(ePaperTimetableFirmware "0.1")
 pico_enable_stdio_uart(ePaperTimetableFirmware 1)
 pico_enable_stdio_usb(ePaperTimetableFirmware 1)
 
+
+
 # Add the standard library to the build
 target_link_libraries(ePaperTimetableFirmware
         pico_stdlib)
@@ -43,6 +56,8 @@ target_link_libraries(ePaperTimetableFirmware
 target_include_directories(ePaperTimetableFirmware PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
+
+
 )
 
 # Add any user requested libraries
@@ -51,7 +66,14 @@ target_link_libraries(ePaperTimetableFirmware
         hardware_dma
         hardware_clocks
         pico_cyw43_arch_none
+        examples
+        ePaper
+        GUI
+        Fonts
+        Config
         )
+
+
 
 pico_add_extra_outputs(ePaperTimetableFirmware)
 
