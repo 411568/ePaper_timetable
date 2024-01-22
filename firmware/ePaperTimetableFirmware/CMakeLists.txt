@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(PICO_BOARD pico_w CACHE STRING "Board type")
 
+set(PICO_SDK_PATH "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
@@ -36,7 +37,7 @@ include_directories(ePaper/examples)
 include_directories(ePaper/lib/Config)
 include_directories(ePaper/lib/GUI)
 
-add_executable(ePaperTimetableFirmware 
+add_executable(ePaperTimetableFirmware     
   main.c
   )
 
