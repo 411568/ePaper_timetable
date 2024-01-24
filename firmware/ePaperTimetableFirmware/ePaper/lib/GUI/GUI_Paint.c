@@ -769,6 +769,7 @@ void Paint_DrawBitMap(const unsigned char* image_buffer)
 {
     UWORD x, y;
     UDOUBLE Addr = 0;
+    UWORD temp_x;
 
     for (y = 0; y < Paint.HeightByte; y++) {
         for (x = 0; x < Paint.WidthByte; x++) {//8 pixel =  1 byte

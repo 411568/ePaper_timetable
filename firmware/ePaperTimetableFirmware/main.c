@@ -57,8 +57,13 @@ int main() {
     printf("before");
     Paint_Clear(WHITE);
     Paint_Clear(RED);
+    Paint_DrawBitMap(kne);
+    EPD_7IN5B_V2_Display(BlackImage, RYImage);
+    DEV_Delay_ms(2000);
 
-    Paint_DrawBitMap(image_2);
+    Paint_Clear(WHITE);
+    Paint_Clear(RED);
+    Paint_DrawBitMap(image_3);
 
     printf("after");
     EPD_7IN5B_V2_Display(BlackImage, RYImage);

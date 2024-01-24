@@ -38,7 +38,7 @@ def generate_calendar_bitmap(year, month, output_file):
 
 
     # Draw days of the week at the top
-    weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    weekdays = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"]
     for i, day in enumerate(weekdays):
         draw.text((i * cell_size + cell_size // 5, 10), day, font = font_days, fill="black")
 

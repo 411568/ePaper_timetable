@@ -79,6 +79,8 @@ extern const unsigned char gImage_7in5_V2_ry[];
 
 extern const unsigned char image_buffer[];
 extern const unsigned char image_2[];
+extern const unsigned char image_3[];
+extern const unsigned char kne[];
 
 #endif
 /* FILE END */
