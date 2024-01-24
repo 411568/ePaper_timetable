@@ -49,44 +49,23 @@ int main() {
     Paint_SelectImage(RYImage);
     Paint_Clear(WHITE);
 
-    EPD_7IN5B_V2_Display(gImage_7in5_V2_b, gImage_7in5_V2_ry);
     DEV_Delay_ms(2000);
-
-    Paint_SelectImage(BlackImage);
-    Paint_Clear(WHITE);
-    Paint_DrawString_EN(10, 0, "dupa", &Font16, BLACK, WHITE);
-    EPD_7IN5B_V2_Display(BlackImage, RYImage);    
-
-    
-    //2.Draw red image
-   Paint_SelectImage(RYImage);
-   Paint_Clear(WHITE);
-  // Paint_DrawString_EN(10, 20, "duza dupa dupa dupa", &Font12, WHITE, BLACK);
-    Paint_DrawString_EN(30, 20, "Monday", &Font24, BLACK, WHITE);
-    Paint_DrawString_EN(130, 20, "Tuesday", &Font24, BLACK, WHITE);
-    Paint_DrawString_EN(230, 20, "Wednesday", &Font24, BLACK, WHITE);
-    Paint_DrawString_EN(330, 20, "Thursday", &Font24, BLACK, WHITE);
-    Paint_DrawString_EN(430, 20, "Friday", &Font24, BLACK, WHITE);
-    Paint_DrawString_EN(530, 20, "Saturday", &Font24, BLACK, WHITE);
-    Paint_DrawString_EN(630, 20, "Sunday", &Font24, BLACK, WHITE);
-
-    EPD_7IN5B_V2_Display(BlackImage, RYImage);  
+    //EPD_7IN5B_V2_Display(BlackImage, RYImage);  
 
     DEV_Delay_ms(2000);
-     
     // bitmap test
     printf("before");
     Paint_Clear(WHITE);
     Paint_Clear(RED);
 
-    Paint_DrawBitMap(image_buffer);
+    Paint_DrawBitMap(image_2);
 
     printf("after");
     EPD_7IN5B_V2_Display(BlackImage, RYImage);
     printf("after display");
     DEV_Delay_ms(10000);
 
-    EPD_7IN5B_V2_Clear();
+   // EPD_7IN5B_V2_Clear();
     EPD_7IN5B_V2_Sleep();
     free(BlackImage);
     free(RYImage);
