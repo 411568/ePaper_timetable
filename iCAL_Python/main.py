@@ -40,7 +40,7 @@ def generate_calendar_bitmap(year, month, output_file):
     # Draw days of the week at the top
     weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     for i, day in enumerate(weekdays):
-        draw.text((i * cell_size + cell_size // 5, 10), day, font = font_days, fill="red")
+        draw.text((i * cell_size + cell_size // 5, 10), day, font = font_days, fill="black")
 
         j = 1
         for event in c.events:
@@ -96,18 +96,27 @@ def bitmap_to_c_header(bitmap_path, header_path):
             header_file.write(header_content)
 
 
+def convert_png_to_mono_bmp(png_path, bmp_path):
+    # Open the PNG image
+    img = Image.open(png_path).convert("L")  # Convert to grayscale
+
+    # Save the image in BMP format
+    img.save(bmp_path, "BMP")
+
 if __name__ == "__main__":
     year = 2024
     month = 1
     output_file = "calendar_bitmap.png"
     output_bit_file = "image_buffer.dat"
     header_path = "header_file.h"
-
+    bmp_path = "file.bmp"
 
 
     generate_calendar_bitmap(year, month, output_file)
 
-    image_buffer = bmp_to_bytes(output_file)
+    convert_png_to_mono_bmp(output_file, bmp_path)
+
+    image_buffer = bmp_to_bytes(bmp_path)
 
     bitmap_to_c_header(output_file, header_path)
     save_image_buffer(image_buffer, output_bit_file)

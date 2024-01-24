@@ -61,17 +61,24 @@ int main() {
     //2.Draw red image
    Paint_SelectImage(RYImage);
    Paint_Clear(WHITE);
-   Paint_DrawString_EN(10, 20, "duza dupa dupa dupa", &Font12, WHITE, BLACK);
+  // Paint_DrawString_EN(10, 20, "duza dupa dupa dupa", &Font12, WHITE, BLACK);
+    Paint_DrawString_EN(30, 20, "Monday", &Font24, BLACK, WHITE);
+    Paint_DrawString_EN(130, 20, "Tuesday", &Font24, BLACK, WHITE);
+    Paint_DrawString_EN(230, 20, "Wednesday", &Font24, BLACK, WHITE);
+    Paint_DrawString_EN(330, 20, "Thursday", &Font24, BLACK, WHITE);
+    Paint_DrawString_EN(430, 20, "Friday", &Font24, BLACK, WHITE);
+    Paint_DrawString_EN(530, 20, "Saturday", &Font24, BLACK, WHITE);
+    Paint_DrawString_EN(630, 20, "Sunday", &Font24, BLACK, WHITE);
+
     EPD_7IN5B_V2_Display(BlackImage, RYImage);  
 
-   DEV_Delay_ms(2000);
+    DEV_Delay_ms(2000);
      
-   
-
+    // bitmap test
     printf("before");
     Paint_Clear(WHITE);
     Paint_Clear(RED);
-    
+
     Paint_DrawBitMap(image_buffer);
 
     printf("after");
