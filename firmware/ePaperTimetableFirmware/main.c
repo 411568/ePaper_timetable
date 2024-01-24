@@ -7,6 +7,7 @@
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
 #include "EPD_Test.h"   //Examples
+#include "EPD_7in5b_V2.h"
 
 int main() {
     stdio_init_all();
@@ -15,9 +16,86 @@ int main() {
     printf("Starting\n");
 	DEV_Delay_ms(500);
     printf("After delay...\n"); 
-    EPD_7in5b_V2_test(); 
+  //  EPD_7in5b_V2_test(); 
     printf("Test finished!\n");
-    if (cyw43_arch_init()) {
+
+    
+
+//////////////////////////////////////////////////////////////
+
+    DEV_Module_Init();
+    EPD_7IN5B_V2_Init();
+    EPD_7IN5B_V2_Clear();
+    DEV_Delay_ms(500);
+	
+    //Create a new image cache named IMAGE_BW and fill it with white
+    UBYTE *BlackImage, *RYImage;
+    UWORD Imagesize = ((EPD_7IN5B_V2_WIDTH % 8 == 0)? (EPD_7IN5B_V2_WIDTH / 8 ): (EPD_7IN5B_V2_WIDTH / 8 + 1)) * EPD_7IN5B_V2_HEIGHT;
+    if((BlackImage = (UBYTE *)malloc(Imagesize)) == NULL) {
+        printf("Failed to apply for black memory...\r\n");
+        return -1;
+    }
+    if((RYImage = (UBYTE *)malloc(Imagesize)) == NULL) {
+        printf("Failed to apply for red memory...\r\n");
+        return -1;
+    }
+    printf("NewImage:BlackImage and RYImage\r\n");
+    Paint_NewImage(BlackImage, EPD_7IN5B_V2_WIDTH, EPD_7IN5B_V2_HEIGHT , 0, WHITE);
+    Paint_NewImage(RYImage, EPD_7IN5B_V2_WIDTH, EPD_7IN5B_V2_HEIGHT , 0, WHITE);
+
+    //Select Image
+    Paint_SelectImage(BlackImage);
+    Paint_Clear(WHITE);
+    Paint_SelectImage(RYImage);
+    Paint_Clear(WHITE);
+
+    EPD_7IN5B_V2_Display(gImage_7in5_V2_b, gImage_7in5_V2_ry);
+    DEV_Delay_ms(2000);
+
+    Paint_SelectImage(BlackImage);
+    Paint_Clear(WHITE);
+    Paint_DrawString_EN(10, 0, "dupa", &Font16, BLACK, WHITE);
+    EPD_7IN5B_V2_Display(BlackImage, RYImage);    
+
+    
+    //2.Draw red image
+   Paint_SelectImage(RYImage);
+   Paint_Clear(WHITE);
+   Paint_DrawString_EN(10, 20, "duza dupa dupa dupa", &Font12, WHITE, BLACK);
+    EPD_7IN5B_V2_Display(BlackImage, RYImage);  
+
+   DEV_Delay_ms(2000);
+     
+   
+
+    printf("before");
+    Paint_Clear(WHITE);
+    Paint_Clear(RED);
+    
+    Paint_DrawBitMap(image_buffer);
+
+    printf("after");
+    EPD_7IN5B_V2_Display(BlackImage, RYImage);
+    printf("after display");
+    DEV_Delay_ms(10000);
+
+    EPD_7IN5B_V2_Clear();
+    EPD_7IN5B_V2_Sleep();
+    free(BlackImage);
+    free(RYImage);
+    BlackImage = NULL;
+    RYImage = NULL;
+    DEV_Delay_ms(2000);//important, at least 2s
+    
+    DEV_Module_Exit();
+
+
+//////////////////////////////////////////////////////////////
+
+
+
+    if (cyw43_arch_init()) 
+    {
         printf("Wi-Fi init failed\n");
         return -1;
     }

@@ -40,7 +40,7 @@ def generate_calendar_bitmap(year, month, output_file):
     # Draw days of the week at the top
     weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     for i, day in enumerate(weekdays):
-        draw.text((i * cell_size + cell_size // 5, 10), day, font = font_days, fill="black")
+        draw.text((i * cell_size + cell_size // 5, 10), day, font = font_days, fill="red")
 
         j = 1
         for event in c.events:
@@ -78,14 +78,36 @@ def save_image_buffer(image_buffer, output_file):
 
 
 
+
+
+def bitmap_to_c_header(bitmap_path, header_path):
+    with open(bitmap_path, 'rb') as bitmap_file:
+        # Read the entire content of the bitmap file
+        bitmap_data = bytearray(bitmap_file.read())
+
+        # Group every 8 bytes into 1 byte and scale to fit uint8_t
+        compressed_data = [format(sum(bitmap_data[i:i+8]) // 8, '02X') for i in range(0, len(bitmap_data), 8)]
+
+        # Generate the C header file content
+        header_content = f"const uint8_t image_buffer[] = {{0x{', 0x'.join(compressed_data)}}};\n"
+
+        # Write the content to the header file
+        with open(header_path, 'w') as header_file:
+            header_file.write(header_content)
+
+
 if __name__ == "__main__":
     year = 2024
     month = 1
     output_file = "calendar_bitmap.png"
     output_bit_file = "image_buffer.dat"
+    header_path = "header_file.h"
+
+
 
     generate_calendar_bitmap(year, month, output_file)
 
     image_buffer = bmp_to_bytes(output_file)
 
+    bitmap_to_c_header(output_file, header_path)
     save_image_buffer(image_buffer, output_bit_file)

@@ -36,8 +36,10 @@ add_subdirectory(ePaper/examples)
 include_directories(ePaper/examples)
 include_directories(ePaper/lib/Config)
 include_directories(ePaper/lib/GUI)
+include_directories(ePaper/lib/e-Paper)
 
 add_executable(ePaperTimetableFirmware     
+#  ePaperTimetableFirmware.c  
   main.c
   )
 
